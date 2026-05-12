@@ -40,6 +40,12 @@
   background: var(--gradient-main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: var(--transition-smooth);
+}
+
+.nav-logo:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
 }
 
 .hero {
