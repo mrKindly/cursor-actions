@@ -56,6 +56,13 @@ There is an interactive CLI for drafting a Story in Jira via the Cursor agent (`
 | `JIRA_EMAIL` | Yes (when creating tickets) | Account email for Jira REST API |
 | `JIRA_API_TOKEN` | Yes (when creating tickets) | Jira API token for basic auth |
 | `JIRA_PROJECT_KEY` | Yes (when creating tickets) | Project key for new issues |
+
+### Optional: Loyalty discount endpoint
+
+`POST /api/trips/discount` books a trip using the same JSON fields as `POST /api/trips`, plus a required `discountCode`.
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
 | `DISCOUNT_CODES_ENABLED` | No | Set to `true` to enable `POST /api/trips/discount` (loyalty and campaign discount codes). When unset or not `true`, that endpoint returns 404. |
 
 ## Building for Production
@@ -71,5 +78,3 @@ And then start the production server:
 ```bash
 npm start
 ```
-
-
