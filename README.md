@@ -45,6 +45,14 @@ npm run dev
 
 5. Open your browser and navigate to `http://localhost:3000` to interact with the application.
 
+### Runtime configuration
+
+Copy values from `.env.example` into `.env` as needed for local development.
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `DISCOUNT_CODES_ENABLED` | No | Set to `true` to enable `POST /api/trips/discount` (loyalty discount booking). If unset or not `true`, that endpoint returns `404`. |
+
 ### Optional: Jira ticket helper
 
 There is an interactive CLI for drafting a Story in Jira via the Cursor agent (`npm run create-ticket`). It reads and writes `.env`; add credentials only if you use this helper.
