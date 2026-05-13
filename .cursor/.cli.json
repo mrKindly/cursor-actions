@@ -1,5 +1,26 @@
 {
   "permissions": {
-    "deny": ["Shell(git push)", "Shell(gh pr create)", "Write(**)"]
+    "allow": [
+      "Read(**)",
+      "Grep(**)",
+      "LS(**)",
+      "SemanticSearch(**)",
+      "Shell(gh pr view *)",
+      "Shell(gh pr diff *)",
+      "Shell(gh api *)",
+      "Shell(cat *)",
+      "Shell(jq *)"
+    ],
+    "deny": [
+      "Write(**)",
+      "Delete(**)",
+      "Shell(git push *)",
+      "Shell(git commit *)",
+      "Shell(gh pr create *)",
+      "Shell(gh pr merge *)",
+      "Shell(gh pr close *)",
+      "Shell(gh pr review --approve*)",
+      "Shell(gh pr review --request-changes*)"
+    ]
   }
 }
