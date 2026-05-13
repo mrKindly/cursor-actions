@@ -12,6 +12,7 @@
     "generate-tests": "tsx scripts/generate-tests.ts",
     "analyze": "tsx scripts/analyze-codebase.ts",
     "update-docs": "tsx scripts/update-docs.ts",
+    "create-ticket": "tsx scripts/create-jira-tickets.ts",
     "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {

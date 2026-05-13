@@ -44,6 +44,19 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:3000` to interact with the application.
 
+### Optional: Jira ticket helper
+
+There is an interactive CLI for drafting a Story in Jira via the Cursor agent (`npm run create-ticket`). It reads and writes `.env`; add credentials only if you use this helper.
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `CURSOR_API_KEY` | Yes (for helper) | Authenticates Cursor agent prompts |
+| `CURSOR_MODEL` | No | Agent model ID (defaults to `composer-2`) |
+| `JIRA_HOST` | Yes (when creating tickets) | Jira host (`https://` optional, e.g. `your-org.atlassian.net`) |
+| `JIRA_EMAIL` | Yes (when creating tickets) | Account email for Jira REST API |
+| `JIRA_API_TOKEN` | Yes (when creating tickets) | Jira API token for basic auth |
+| `JIRA_PROJECT_KEY` | Yes (when creating tickets) | Project key for new issues |
+
 ## Building for Production
 
 To create an optimized production build of the application:
@@ -57,3 +70,4 @@ And then start the production server:
 ```bash
 npm start
 ```
+
