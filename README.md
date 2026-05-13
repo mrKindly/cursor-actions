@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# WanderSync
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WanderSync is a modern, responsive web application for exploring and booking curated travel experiences. The current flagship experience is a beautifully designed Coastal Boat Trip booking interface. 
 
-Currently, two official plugins are available:
+The application has been built from the ground up to provide a premium user experience, complete with dynamic pricing calculations, interactive components, and smooth animations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Intuitive Booking Widget**: Dynamically calculate subtotal, taxes, and total pricing based on passenger count.
+- **Premium UI/UX**: Built with a sleek glassmorphic navigation bar, subtle micro-animations, and high-quality destination imagery.
+- **Responsive Layout**: Seamless transition between desktop viewing and a specialized mobile navigation tab bar.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+This project is built with a modern edge stack:
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS v4 & PostCSS
+- **Icons**: Lucide React
+- **Animations**: Motion (Framer Motion)
+- **Language**: TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Follow these steps to run the application locally.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. Clone this repository to your local machine.
+2. Install the necessary dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Start the Next.js development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Open your browser and navigate to `http://localhost:3000` to interact with the application.
+
+## Building for Production
+
+To create an optimized production build of the application:
+
+```bash
+npm run build
+```
+
+And then start the production server:
+
+```bash
+npm start
 ```
