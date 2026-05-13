@@ -1,0 +1,53 @@
+name: Auto Generate Unit Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  generate-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to push generated test files back to the PR branch
+      pull-requests: read
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install tsx globally
+        run: npm install -g tsx
+
+      - name: Generate unit tests
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+          JIRA_HOST: ${{ secrets.JIRA_HOST }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: tsx scripts/generate-tests.ts ${{ github.event.pull_request.number }}
+
+      - name: Run generated tests to verify they pass
+        run: npm run test --testPathPattern="__tests__" --passWithNoTests --no-coverage
+
+      - name: Commit and push generated tests
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          # Only commit if there are changes
+          git diff --staged --quiet || git commit -m "chore: auto-generate unit tests for PR #${{ github.event.pull_request.number }}"
+          git push

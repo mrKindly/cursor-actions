@@ -58,8 +58,8 @@ const execAsync = promisify(exec);
 const CURSOR_MODEL = process.env.CURSOR_MODEL ?? 'composer-2';
 const CONCURRENCY_LIMIT = Number(process.env.CONCURRENCY_LIMIT ?? 4);
 const MAX_FILE_LINES = Number(process.env.MAX_FILE_LINES ?? 200);
-const DRY_RUN = process.argv.includes('--dry-run');
-const DIFF_ONLY = process.argv.includes('--diff-only');
+const DRY_RUN = process.argv.includes('--dry-run') || process.env.npm_config_dry_run === 'true' || process.env.DRY_RUN === 'true';
+const DIFF_ONLY = process.argv.includes('--diff-only') || process.env.npm_config_diff_only === 'true' || process.env.DIFF_ONLY === 'true';
 
 const {
     CURSOR_API_KEY,
