@@ -596,7 +596,7 @@ export async function checkAndApplyDocUpdates(): Promise<void> {
 //
 // Run directly:   npx ts-node scripts/update-docs.ts [baseBranch]
 // Via npm script: npm run update-docs [-- baseBranch]
-// Pre-commit hook: called automatically by .git/hooks/pre-commit
+// Pre-commit hook: Git uses core.hooksPath (.githooks); see .githooks/pre-commit
 // =============================================================================
 
 checkAndApplyDocUpdates().catch((e) => {

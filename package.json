@@ -13,7 +13,7 @@
     "analyze": "tsx scripts/analyze-codebase.ts",
     "update-docs": "tsx scripts/update-docs.ts",
     "create-ticket": "tsx scripts/create-jira-tickets.ts",
-    "prepare": "git config core.hooksPath .githooks"
+    "prepare": "git config core.hooksPath .githooks && node -e \"const fs=require('fs');try{fs.chmodSync('.githooks/pre-commit',0o755)}catch{}\""
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
