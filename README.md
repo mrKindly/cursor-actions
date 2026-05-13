@@ -36,13 +36,22 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 npm install
 ```
 
-3. Start the Next.js development server:
+3. Register Git hooks (recommended once per clone): run `npm run prepare` so Git uses `.githooks` (the pre-commit script can refresh API documentation). GUI or IDE Git clients must be able to run `npm` from that hook; if commits fail with “npm not found”, extend `PATH` or commit from a shell where `npm` works.
+4. Start the Next.js development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:3000` to interact with the application.
+5. Open your browser and navigate to `http://localhost:3000` to interact with the application.
+
+### Runtime configuration
+
+Copy values from `.env.example` into `.env` as needed for local development.
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `DISCOUNT_CODES_ENABLED` | No | Set to `true` to enable `POST /api/trips/discount` (loyalty discount booking). If unset or not `true`, that endpoint returns `404`. |
 
 ### Optional: Jira ticket helper
 
@@ -57,6 +66,7 @@ There is an interactive CLI for drafting a Story in Jira via the Cursor agent (`
 | `JIRA_API_TOKEN` | Yes (when creating tickets) | Jira API token for basic auth |
 | `JIRA_PROJECT_KEY` | Yes (when creating tickets) | Project key for new issues |
 
+
 ## Building for Production
 
 To create an optimized production build of the application:
@@ -70,4 +80,3 @@ And then start the production server:
 ```bash
 npm start
 ```
-
